@@ -1,0 +1,126 @@
+{% extends '../base/base.html' %}
+{% block Empleados %}active{% endblock Empleados %}
+{% block body %}
+
+<div class="panel-header panel-header-sm">
+</div>
+
+<div class="content">
+    <div class="row">
+
+        <div class="col-md-3">
+        </div>
+       
+        <div class="col-md-6">
+            <div class="card">
+
+                <div class="card-header">
+                    <h4 class="card-title">Registrar Empleado</h4>
+                </div>
+                
+                {% comment %} <div class="card-body"> {% endcomment %}
+                    <div class="card mb-4 text-center">
+                        <div class="card-body text-left">
+
+                            <form action="" method="POST" class="form">
+                                {% csrf_token %}
+
+                                <div class="card mb-4">
+                                    <div class="card-body text-left">
+                                    <h5>Usuario</h5>
+                                    <div class="mb-3">
+                                        <label class="form-label">Usuario</label>
+                                        {{ form_usuario.username }}
+                                    </div>
+                                    <div class="mb-3">
+                                        <label  class="form-label">Correo</label>
+                                        {{ form_usuario.email }}
+                                    </div>
+                                    <div class="mb-3">
+                                        <label  class="form-label">Password</label>
+                                        {{ form_usuario.password1 }}
+                                    </div>
+                                    <div class="mb-3">
+                                        <label  class="form-label">Repite el Password</label>
+                                        {{ form_usuario.password2 }}
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-4">
+                                    <div class="card-body text-left">
+                                    <h5>Empleado</h5>
+                                    <div class="mb-3">
+                                        <label class="form-label">Nombre</label>
+                                        {{ form_empleado.nombrepila }}
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Primer Apellido</label>
+                                        {{ form_empleado.primerapellido }}
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Segundo Apellido</label>
+                                        {{ form_empleado.segundoapellido }}
+                                    </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card mb-4">
+                                    <div class="card-body text-left">
+                                    <h5>Dirección</h5>
+                                    <div class="mb-3">
+                                        <label class="form-label">Calle</label>
+                                        {{ form_empleado.dircalle }}
+                                    </div>
+                                    <div class="mb-3">
+                                        <label  class="form-label">Número De Calle</label>
+                                        {{ form_empleado.dirnumero }}
+                                    </div>
+                                    <div class="mb-3">
+                                        <label  class="form-label">Colonia</label>
+                                        {{ form_empleado.dircolonia }}
+                                    </div>
+                                    </div>
+                                </div>
+                                        
+                                <div class="card mb-4">
+                                    <div class="card-body text-left">
+                                    <h5>Información Laboral</h5>
+                                    <div class="mb-3">
+                                        <label class="form-label">Número De Télefono</label>
+                                        {{ form_empleado.numtel }}
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Horario</label>
+                                        {{ form_empleado.horario }}
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Puesto De Trabajo</label>
+                                        {{ form_empleado.puesto }}                                               
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Área De Trabajo</label>
+                                        {{ form_empleado.areatrabajo }}
+                                    </div>
+                                </div>
+                                
+                                <div class="container text-end">
+                                    <button type="submit" class="btn btn-primary">Registrar</button>
+                                </div>
+
+                            </form>
+                                
+                        </div>
+                    </div>
+                {% comment %} </div>  {% endcomment %}
+            </div>
+        </div>
+
+        <div class="col-md-3">
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

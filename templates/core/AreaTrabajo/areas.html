@@ -1,0 +1,89 @@
+{% extends '../base/base.html' %}
+{% block AreasTrabajo %}active{% endblock AreasTrabajo %}
+{% block show %}show{% endblock show %}
+{% block body %}
+
+<div class="panel-header panel-header-sm">
+</div>
+
+<div class="content">
+    <div class="row">
+       
+        <div class="col-md-4">
+            <div class="card">
+
+                <div class="card-header">
+                    <h4 class="card-title">Áreas De Trabajo</h4>
+                </div>
+                
+                <div class="card-body">
+
+                    <form action="" method="POST" class="form">{% csrf_token %}
+
+                        <div class="card mb-4 text-center">
+
+                            <div class="card-body text-left">
+
+                                {{ form }}
+                                
+                                <div class="container text-end">
+                                    <button type="submit" class="btn btn-primary">Registrar</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div> 
+            </div>
+        </div>
+        
+        <div class="col-md-8">
+            <div class="card">
+
+                <div class="card-header">
+                    <h4 class="card-title">Áreas De Trabajo Registradas</h4>
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead class="text-primary">
+                            <tr>
+                                <th>Nombre</th>
+                                <th class="text-center">Detalles</th>
+                                <th class="text-center">Editar</th>
+                                <th class="text-center">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for a in Areasdetrabajo %}
+                                <tr>
+                                    <td>{{a.nombre}}</td>
+                                    <td class="text-center"><a href="{% url 'core:cantidadEmpleados' pk=a.numero %}" class="btn btn-info btn-round btn-icon btn-sm">
+                                        <i class="now-ui-icons business_briefcase-24"></i></a></td>
+                                    <td class="text-center"><a href="{% url 'core:editarArea' pk=a.numero %}" class="btn btn-primary btn-round btn-icon btn-sm">
+                                        <i class="now-ui-icons ui-2_settings-90"></i></a></td>
+                                    <td class="text-center"><a href="#" onclick = "Eliminar( 'eliminarArea/', {{a.numero}} )"  class="btn btn-danger btn-round btn-icon btn-sm">
+                                        <i class="now-ui-icons ui-1_simple-remove"></i></a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>                            
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</div>
+
+
+
+
+{% endblock body %}
+
+
+

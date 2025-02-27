@@ -1,0 +1,157 @@
+{% extends '../base/base.html' %}
+{% load static %}
+{% block body %}
+
+      <div class="panel-header panel-header-sm">
+      </div>
+
+      <div class="content">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card">
+                
+              <div class="card-header">
+                <h5 class="title">Editar Perfil</h5>
+              </div>
+              <div class="card-body py-3">
+                <form id="form" action="" method="POST" class="form">
+                  {% csrf_token %}
+                  <div class="row">
+                    <div class="col-md-6 pr-1 py-3">
+                      <div class="form-group">
+                        <label>Usuario</label>
+                        {{ form.nombrepila }}
+                      </div>
+                    </div>
+                    <div class="col-md-6 pl-1 py-3">
+                      <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" class="form-control" disabled="" placeholder="Username" value="{{ User.email }}">
+                      </div>
+                    </div>
+              
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 pr-1 py-3">
+                      <div class="form-group">
+                        <label>Nombre/s</label>
+                        {{ form.nombrepila }}
+                      </div>
+                    </div>
+                    <div class="col-md-4 px-1 py-3">
+                      <div class="form-group">
+                        <label>Primer Apellido</label>
+                        {{ form.primerapellido }}
+                      </div>
+                    </div>
+                    <div class="col-md-4 pl-1 py-3">
+                      <div class="form-group">
+                        <label>Segundo Apellido</label>
+                        {{ form.segundoapellido }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 pr-1 py-3">
+                      <div class="form-group">
+                        <label>Calle</label>
+                        {{ form.dircalle }}
+                      </div>
+                    </div>
+                    <div class="col-md-4 px-1 py-3">
+                      <div class="form-group">
+                        <label>Colonia</label>
+                        {{ form.dircolonia }}
+                      </div>
+                    </div>
+                    <div class="col-md-4 pl-1 py-3">
+                      <div class="form-group">
+                        <label>Número Exterior</label>
+                        {{ form.dirnumero }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 pr-1 py-3">
+                      <div class="form-group">
+                        <label>Télefono</label>
+                        {{ form.numtel }}
+                      </div>
+                    </div>
+                    <div class="col-md-4 px-1 py-3">
+                      <div class="form-group">
+                        <label>Horario</label>
+                        {{ form.horario }}
+                      </div>
+                    </div>
+                    <div class="col-md-4 pl-1 py-3">
+                      <div class="form-group">
+                        <label>Área De Trabajo</label>
+                        {{ form.areatrabajo }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 pr-1 py-3">
+                      <div class="form-group">
+                        <label>Puesto</label>
+                        {{ form.puesto }}
+                      </div>
+                    </div>
+                    <div class="col-md-6 pl-1 py-3">
+                      <div class="form-group">
+                        <label>Jefe</label>
+                        {{ form.jefearea }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row g-0">
+                    <div class="col-sm-4">
+                      <div class="container text-end">
+                        <a type="button" class="btn btn-danger btn-block" href="{{ request.META.HTTP_REFERER }}">Regresar</a>
+                      </div>
+                  </div>
+                    <div class="col-sm-4">
+                      <div class="container text-end">
+                        <a type="button" class="btn btn-info btn-block" href="{% url 'core:detailBitacoras' pk=NumEmp %}">Bitácoras</a>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="container text-end">
+                      <button type="button" id="Guardar" class="btn btn-primary btn-block">Guardar Cambios</button>
+                    </div>
+                  </div>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card card-user">
+              <div class="image">
+                <img src="{% static 'Base/assets/img/bg5.jpg' %}" alt="...">
+              </div>
+              <div class="card-body">
+                <div class="author">
+                  <a href="#">
+                    <img class="avatar border-gray" src="{% static 'Base/assets/img/default-avatar.png' %}" alt="...">
+                    <h5 class="title">{{ nombrepila }} {{ primerapellido }}</h5>
+                  </a>
+                  <p class="description">
+                    {{ User.email }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+{% endblock body %}

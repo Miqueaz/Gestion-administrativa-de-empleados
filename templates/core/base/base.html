@@ -1,0 +1,303 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'Base/assets/img/apple-icon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'Base/assets/img/favicon.png' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+
+    <title>Oppenheimer</title>
+    
+    <!--Fonts and icons-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    {% comment %} <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'acordion.css' %}">
+
+    <!-- CSS Files -->
+    <link href="{% static 'Base/assets/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'Base/assets/demo/Css.css' %}" rel="stylesheet" />
+  </head>
+  
+  <body class="sidebar-mini">
+    <div class="wrapper ">
+
+      <div class="sidebar" data-color="red" >
+        <div class="logo">
+          <a href="#" class="simple-text logo-mini"><i class="now-ui-icons education_atom"></i></a>
+          <a href="#" class="simple-text logo-normal">OPPENHEIMER</a>
+          <div class="navbar-minimize">
+            <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
+              <i class="now-ui-icons text_align-center visible-on-sidebar-regular"></i>
+              <i class="now-ui-icons design_bullet-list-67 visible-on-sidebar-mini"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="sidebar-wrapper" id="sidebar-wrapper">
+          <ul class="nav">
+
+            <li class="{% block Inicio %}{% endblock Inicio %}">
+              <a href="{% url 'core:pagina_principal' %}"><i class="now-ui-icons business_chart-bar-32"></i><p>Inicio</p></a>
+            </li>
+
+            
+
+            {% if request.user.is_staff %}
+            
+              <li class="{% block Empleados %}{% endblock Empleados %}">
+                <a href="{% url 'core:empleados' %}"><i class="now-ui-icons business_badge"></i><p>Empleados</p></a>
+              </li>
+
+              <li class="{% block AreasTrabajo2 %}{% endblock AreasTrabajo2 %}">
+                <a href="{% url 'core:areasTrabajo' %}"><i class="now-ui-icons ui-2_settings-90"></i><p>Áreas De Trabajo</p></a>
+              </li>
+            
+              <li class="{% block active %}{% endblock active %}">
+                <a data-toggle="collapse" href="#administracion" class="collapsed" aria-expanded="false">
+                  <i class="now-ui-icons design_bullet-list-67"></i>
+                  <p>Administración<b class="caret"></b></p>
+                </a>
+
+                <div class="collapse {% block show %}{% endblock show %}" id="administracion">
+                <ul class="nav">
+
+                  <li class="{% block Puestos %}{% endblock Puestos %}">
+                    <a href="{% url 'core:puestos' %}">
+                      <span class="sidebar-mini-icon"><i class="now-ui-icons files_single-copy-04"></i></span>
+                      <span class="sidebar-normal"> Puestos </span>
+                    </a>
+                  </li>
+
+                  <li class="{% block AreasTrabajo %}{% endblock AreasTrabajo %}" >
+                    <a href="{% url 'core:areas' %}">
+                      <span class="sidebar-mini-icon"><i class="now-ui-icons business_briefcase-24"></i></span>
+                      <span class="sidebar-normal"> Áreas De Trabajo </span>
+                    </a>
+                  </li>
+      
+                  <li class="{% block Piezas %}{% endblock Piezas %}">
+                    <a href="{% url 'core:piezas' %}">
+                      <span class="sidebar-mini-icon"><i class="now-ui-icons design_app"></i></span>
+                      <span class="sidebar-normal">Piezas</span>
+                    </a>
+                  </li>
+
+                  <li class="{% block Materiales %}{% endblock Materiales %}">
+                    <a href="{% url 'core:materiales' %}">
+                      <span class="sidebar-mini-icon"><i class="now-ui-icons shopping_box"></i></span>
+                      <span class="sidebar-normal">Materiales</span>
+                    </a>
+                  </li>
+
+                  <li class="{% block Modelos %}{% endblock Modelos %}">
+                    <a href="{% url 'core:modelos' %}">
+                      <span class="sidebar-mini-icon"><i class="now-ui-icons files_box"></i></span>
+                      <span class="sidebar-normal">Modelos</span>
+                    </a>
+                  </li>
+                  
+                <!----------------------------------------------------------------------------------------------------------------------------->
+                          <!--                  SOLO TAREAS                                             -->
+                  <li class="{% block active2 %}{% endblock active2 %}">
+                    <a data-toggle="collapse" href="#tareas" class="collapsed" aria-expanded="false">
+                      <i class="now-ui-icons design-2_ruler-pencil"></i>
+                      <p>Tareas<b class="caret"></b></p>
+                    </a>
+                    <div class="collapse {% block show2 %}{% endblock show2 %}" id="tareas">
+                      <ul class="nav">
+                        <li class="{% block Tareas %}{% endblock Tareas %}">
+                          <a href="{% url 'core:tareas' %}">
+                            <span class="sidebar-mini-icon"><i class="now-ui-icons design-2_ruler-pencil"></i></span>
+                            <span class="sidebar-normal">Tareas</span>
+                          </a>
+                        </li>
+
+                        <li class="{% block Estados %}{% endblock Estados %}">
+                          <a href="{% url 'core:estados' %}">
+                            <span class="sidebar-mini-icon"><i class="now-ui-icons tech_watch-time"></i></span>
+                            <span class="sidebar-normal">Estados</span>
+                          </a>
+                        </li>
+        
+                        <li class="{% block Actividades %}{% endblock Actividades %}">
+                          <a href="{% url 'core:actividades' %}">
+                            <span class="sidebar-mini-icon"><i class="now-ui-icons ui-1_bell-53"></i></span>
+                            <span class="sidebar-normal">Actividades</span>
+                          </a>
+                        </li>
+
+                      </ul>
+                    </div>
+                  </li>
+                     <!------------------------------------------------------------------------------------------------------------------------------->
+                </ul>
+                </div>
+              </li>
+              <!----------------BITACORAS------------------------------------------------------------------------------------------------------------------>
+
+              
+
+              <!------------------------------------------------------------------------------------------------------------------------------------------->
+            {% endif %}
+            <li class="{% block active3 %}{% endblock active3 %}">
+              <a data-toggle="collapse" href="#bitacoras" class="collapsed" aria-expanded="false">
+                <i class="now-ui-icons education_paper"></i>
+                <p>Bitácoras<b class="caret"></b></p>
+              </a>
+
+              <div class="collapse {% block show3 %}{% endblock show3 %}" id="bitacoras">
+              <ul class="nav">
+
+                <li class="{% block BitacorasES %}{% endblock BitacorasES %}">
+                  <a href="{% url 'core:bitacoraErrorSolucion' %}">
+                    <span class="sidebar-mini-icon"><i class="now-ui-icons business_bulb-63"></i></span>
+                    <span class="sidebar-normal"> Erores y Soluciones </span>
+                  </a>
+                </li>
+
+                <li class="{% block BitacorasTA %}{% endblock BitacorasTA %}">
+                  <a href="{% url 'core:bitacoraTareaActividad' %}">
+                    <span class="sidebar-mini-icon"><i class="now-ui-icons design_scissors"></i></span>
+                    <span class="sidebar-normal">Tarea y Actividades</span>
+                  </a>
+                </li>
+
+                <li class="{% block Bitacoras %}{% endblock Bitacoras %}">
+                  <a href="{% url 'core:bitacoras' %}">
+                    <span class="sidebar-mini-icon"><i class="now-ui-icons ui-1_simple-add"></i></span>
+                    <span class="sidebar-normal"> Nueva Bitácora </span>
+                  </a>
+                </li>
+
+              </ul>
+              </div>
+            </li>
+
+            <li class="active-pro">
+              <a href="{% url 'home:LogOut' %}"><i class="now-ui-icons media-1_button-power"></i><p>Log Out</p></a>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="main-panel" id="main-panel">
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
+          <div class="container-fluid">
+            <div class="navbar-wrapper">
+              <div class="navbar-toggle">
+                <button type="button" class="navbar-toggler">
+                  <span class="navbar-toggler-bar bar1"></span>
+                  <span class="navbar-toggler-bar bar2"></span>
+                  <span class="navbar-toggler-bar bar3"></span>
+                </button>
+              </div>
+              <a class="navbar-brand" href="#Ray_Parra">Dashboard</a>
+            </div>
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-bar navbar-kebab"></span>
+              <span class="navbar-toggler-bar navbar-kebab"></span>
+              <span class="navbar-toggler-bar navbar-kebab"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navigation">
+
+              <form method="get" action="{{ seccion }}">
+                {% csrf_token %}
+                <div class="input-group no-border">
+                  <input type="text" name="q" value="" class="form-control" placeholder="Search...">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <i class="now-ui-icons ui-1_zoom-bold"></i>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+              <ul class="navbar-nav">
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'core:user' %}">
+                    <i class="now-ui-icons users_single-02"></i>
+                    <p>
+                      <span class="d-lg-none d-md-block">Account</span>
+                    </p>
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <!-- End Navbar -->
+
+        {% block body %}
+        {% comment %} Contenido de las demas paginas {% endcomment %}
+        {% endblock body %}
+
+        <footer class="footer">
+          <div class=" container-fluid ">
+            <nav>
+              <ul>
+                <li>
+                  <a href="#">
+                    Oppenheimer
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'home:about' %}">
+                    About Us
+                  </a>
+                </li>
+              </ul>
+            </nav>
+            <div class="copyright" id="copyright">
+              &copy; <script>
+                document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
+              </script>, Designed and Coded by <a href="https://gitlab.com/0322103793/gestion-de-produccion-de-empleados" target="_blank">Los CHAD</a>.
+            </div>
+          </div>
+        </footer>
+
+      </div>  
+
+    </div>
+
+    {% comment %} Core JS Files {% endcomment %}
+    <script src="{% static 'js/core/jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/core/boostrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script src="{% static 'js/now-ui-dashboard.min.js' %}" type="text/javascript"></script>
+
+    {% comment %} Chart JS  {% endcomment %}
+    <script src="{% static 'Base/assets/js/plugins/chartjs.min.js' %}"></script>
+    <script src="{% static 'sweetalert2/dist/sweetalert2.all.min.js' %}"></script>
+
+    {% comment %} Scrips {% endcomment %}
+    <script src="{% static 'Graficas.js' %}"></script>
+    <script src="{% static 'Alertas.js' %}"></script>
+
+    
+    {% if messages %}
+      {% for m in messages %}
+        <script>
+          Swal.fire({
+            title: "{{m}}",
+            confirmButtonColor: "#f96332"
+          });
+        </script>
+      {% endfor %}
+    {% endif %}
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+{% extends '../base/base.html' %}
+{% block AreasTrabajo2 %}active{% endblock AreasTrabajo2 %}
+{% block body %}
+
+<div class="panel-header panel-header-lg">
+  <canvas id="GraficaCantidadEmpleados"></canvas>
+</div>
+
+<div class="content">
+  <div class="row g-0">
+
+    <div class="col-md-1">
+    </div>
+
+    <div class="col-md-5">
+      <div class="card">
+
+        <div class="card-header">
+          <div class="row g-0">
+
+            <div class="col-sm-12 text-center">
+               <h4 class="card-title">Áreas De Trabajo Con Empleados</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+
+          <div class="table-responsive table-hover">
+
+            <table class="table table-sm " style="text-align:center;">
+
+              <thead class="text-info">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cantidad De Empleados</th>
+                    <th>Detalles</th>
+                </tr>
+              </thead>
+
+              <tbody style="text-align:rigth;">
+                  {% for a in AreasEmpleados %}
+                      <tr>
+                          <td>{{a.areatrabajo__nombre}}</td>
+                          <td>{{a.empleados }}</td>
+                          <!--DETALLES-->
+                          <td class="text-center"><a href="{% url 'core:cantidadEmpleados' pk=a.areatrabajo__numero %}" class="btn btn-info btn-round btn-icon btn-sm">
+                            <i class="now-ui-icons ui-1_simple-add"></i></a></td>
+                      </tr>
+                  {% endfor %}
+              </tbody>   
+
+            </table>
+            <script>
+              $(document).ready(function () {
+                $('#tablax').DataTable();
+              })
+            </script>
+
+          </div>
+
+        </div>                      
+
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="card">
+
+        <div class="card-header">
+          <div class="row g-0">
+
+            <div class="col-sm-12 text-center">
+               <h4 class="card-title">Áreas De Trabajo Con Modelos</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+
+          <div class="table-responsive table-hover">
+
+            <table class="table table-sm " style="text-align:center;">
+
+              <thead class="text-primary">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cantidad De Modelos</th>
+                    <th>Detalles</th>
+                </tr>
+              </thead>
+              <tbody style="text-align:rigth;">
+                  {% for m in AreasModelos %}
+                      <tr>
+                          <td>{{m.area__nombre}}</td>
+                          <td>{{m.Modelos }}</td>
+                          <!--DETALLES-->
+                          <td class="text-center"><a href="{% url 'core:cantidadModelos' pk=m.area__numero %}" class="btn btn-primary btn-round btn-icon btn-sm">
+                            <i class="now-ui-icons ui-1_simple-add"></i></a></td>
+                      </tr>
+                  {% endfor %}
+              </tbody>   
+            </table>
+            <script>
+              $(document).ready(function () {
+                $('#tablax').DataTable();
+              })
+            </script>
+
+          </div>
+
+        </div>                      
+
+      </div>
+    </div>
+    <div class="col-md-1">
+    </div>
+  </div>
+</div>
+
+  {% endblock body %}

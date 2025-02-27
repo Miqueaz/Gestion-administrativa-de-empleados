@@ -1,0 +1,89 @@
+{% extends '../base/base.html' %}
+{% block AreasTrabajo2 %}active{% endblock AreasTrabajo2 %}
+{% block body %}
+
+<div class="panel-header panel-header-sm">
+</div>
+
+<div class="content">
+  <div class="row g-0">
+
+    <div class="col-md-3">
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+
+        <div class="card-header">
+          <div class="row g-0">
+
+            <div class="col-sm-12 text-center">
+              <h4 class="card-title">{{AreaTrabajo.nombre}}</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+
+          <div class="table-responsive table-hover">
+            <table class="table table-sm">
+
+              <thead class="text-info">
+                
+                <tr>
+                  <div class="row g-0">
+                    <th class="col-md-1">Número</th>
+                    <th class="col-md-2">Empleado</th>
+                    <th class="col-md-2">Puesto</th>
+                    <th class="col-md-2">Jefe de Área</th>
+                    <th class="col-md-2 text-center">Detalles</th>
+                  </div>
+                    
+                    
+                </tr>
+              </thead>
+
+              <tbody style="text-align:rigth;">
+                  {% for e in Empleados %}
+                      <tr>
+                          <td>{{e.numero}}</td>
+                          <td>{{e.nombrepila}} {{e.primerapellido}}</td>
+                          <td>{{e.puesto__nombre}}</td>
+                          <td>{{e.jefearea__nombrepila}} {{e.jefearea__primerapellido}}</td>
+                          <td class="text-center"><a href="{% url 'core:detailEmpleados' pk=e.numero %}" class="btn btn-info btn-round btn-icon btn-sm">
+                            <i class="now-ui-icons users_single-02"></i></a>
+                          </td>
+                      </tr>
+                  {% endfor %}
+              </tbody>   
+
+            </table>
+            <script>
+              $(document).ready(function () {
+                $('#tablax').DataTable();
+              })
+            </script>
+
+          </div>
+
+        </div>                      
+
+      </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+      <a type="button" class="btn btn-info btn-block" href="{% url 'core:areasTrabajo' %}">Regresar</a>
+    </div>
+    <div class="col-md-3">
+    </div>
+  </div>
+  
+</div>
+
+  {% endblock body %}

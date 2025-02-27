@@ -1,0 +1,370 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Iniciar Sesión</title>
+    {% comment %} <link rel="icon" type="image/x-icon" href="{% static 'index/assets/favicon.ico' %}" /> {% endcomment %}
+    <!-- Font Awesome icons (free version)-->
+    {% comment %} <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script> {% endcomment %}
+    <!-- Google fonts-->
+    {% comment %} <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" /> {% endcomment %}
+    {% comment %} <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" /> {% endcomment %}
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'index/css/styles.css' %}" rel="stylesheet" />
+  <!--bootstrap-->
+    {% comment %} <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> {% endcomment %}
+
+
+</head>
+<body id="page-top">
+    {% comment %} Barra de navegacion {% endcomment %}
+<div class="sidebar" data-color="orange">
+
+      <div class="logo">
+        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+        CT
+        </a>
+        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        Creative Tim
+        </a>
+        <div class="navbar-minimize">
+          <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
+            <i class="now-ui-icons text_align-center visible-on-sidebar-regular"></i>
+            <i class="now-ui-icons design_bullet-list-67 visible-on-sidebar-mini"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="sidebar-wrapper" id="sidebar-wrapper">
+        <div class="user">
+
+          <div class="photo">
+            <img src="../assets/img/james.jpg">
+          </div>
+
+          <div class="info">
+            <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+              <span>
+                James Amos
+                <b class="caret"></b>
+              </span>
+            </a>
+            <div class="clearfix"></div>
+
+            <div class="collapse" id="collapseExample">
+
+              <ul class="nav">
+                <li>
+                  <a href="#">
+                    <span class="sidebar-mini-icon">MP</span>
+                    <span class="sidebar-normal">My Profile</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="sidebar-mini-icon">EP</span>
+                    <span class="sidebar-normal">Edit Profile</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="sidebar-mini-icon">S</span>
+                    <span class="sidebar-normal">Settings</span>
+                  </a>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+        <ul class="nav">
+          <li>
+            <a data-toggle="collapse" href="#tablesExamples" class="" aria-expanded="true">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p>
+                Tables <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse show" id="tablesExamples" style="">
+            <ul class="nav">
+              <li>
+                <a href="../examples/tables/regular.html">
+                  <span class="sidebar-mini-icon">RT</span>
+                  <span class="sidebar-normal"> Regular Tables </span>
+                </a>
+              </li>
+            <li>
+            <a href="../examples/tables/extended.html">
+      <span class="sidebar-mini-icon">ET</span>
+      <span class="sidebar-normal"> Extended Tables </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/tables/datatables.net.html">
+      <span class="sidebar-mini-icon">DT</span>
+      <span class="sidebar-normal"> DataTables.net </span>
+      </a>
+      </li>
+      </ul>
+      </div>
+      </li><li class="active">
+      <a href="../examples/dashboard.html">
+      <i class="now-ui-icons design_app"></i>
+      <p>Dashboard</p>
+      </a>
+      </li>
+      <li>
+      <a data-toggle="collapse" href="#pagesExamples">
+      <i class="now-ui-icons design_image"></i>
+      <p>
+      Pages <b class="caret"></b>
+      </p>
+      </a>
+      <div class="collapse " id="pagesExamples">
+      <ul class="nav">
+      <li>
+      <a href="../examples/pages/pricing.html">
+      <span class="sidebar-mini-icon">P</span>
+      <span class="sidebar-normal"> Pricing </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/pages/rtl.html">
+      <span class="sidebar-mini-icon">RS</span>
+      <span class="sidebar-normal"> RTL Support </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/pages/invoice.html">
+      <span class="sidebar-mini-icon">I</span>
+      <span class="sidebar-normal"> Invoice </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/pages/timeline.html">
+      <span class="sidebar-mini-icon">T</span>
+      <span class="sidebar-normal"> Timeline </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/pages/login.html">
+      <span class="sidebar-mini-icon">L</span>
+      <span class="sidebar-normal"> Login </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/pages/register.html">
+      <span class="sidebar-mini-icon">R</span>
+      <span class="sidebar-normal"> Register </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/pages/lock.html">
+      <span class="sidebar-mini-icon">LS</span>
+      <span class="sidebar-normal"> Lock Screen </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/pages/user.html">
+      <span class="sidebar-mini-icon">UP</span>
+      <span class="sidebar-normal"> User Profile </span>
+      </a>
+      </li>
+      </ul>
+      </div>
+      </li>
+      <li>
+      <a data-toggle="collapse" href="#componentsExamples">
+      <i class="now-ui-icons education_atom"></i>
+      <p>
+      Components <b class="caret"></b>
+      </p>
+      </a>
+      <div class="collapse " id="componentsExamples">
+      <ul class="nav">
+      <li>
+      <a href="../examples/components/buttons.html">
+      <span class="sidebar-mini-icon">B</span>
+      <span class="sidebar-normal"> Buttons </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/components/grid.html">
+      <span class="sidebar-mini-icon">G</span>
+      <span class="sidebar-normal"> Grid System </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/components/panels.html">
+      <span class="sidebar-mini-icon">P</span>
+      <span class="sidebar-normal"> Panels </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/components/sweet-alert.html">
+      <span class="sidebar-mini-icon">SA</span>
+      <span class="sidebar-normal"> Sweet Alert </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/components/notifications.html">
+      <span class="sidebar-mini-icon">N</span>
+      <span class="sidebar-normal"> Notifications </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/components/icons.html">
+      <span class="sidebar-mini-icon">I</span>
+      <span class="sidebar-normal"> Icons </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/components/typography.html">
+      <span class="sidebar-mini-icon">T</span>
+      <span class="sidebar-normal"> Typography </span>
+      </a>
+      </li>
+      </ul>
+      </div>
+      </li>
+      <li>
+      <a data-toggle="collapse" href="#formsExamples">
+      <i class="now-ui-icons files_single-copy-04"></i>
+      <p>
+      Forms <b class="caret"></b>
+      </p>
+      </a>
+      <div class="collapse " id="formsExamples">
+      <ul class="nav">
+      <li>
+      <a href="../examples/forms/regular.html">
+      <span class="sidebar-mini-icon">RF</span>
+      <span class="sidebar-normal"> Regular Forms </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/forms/extended.html">
+      <span class="sidebar-mini-icon">EF</span>
+      <span class="sidebar-normal"> Extended Forms </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/forms/validation.html">
+      <span class="sidebar-mini-icon">V</span>
+      <span class="sidebar-normal"> Validation Forms </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/forms/wizard.html">
+      <span class="sidebar-mini-icon">W</span>
+      <span class="sidebar-normal"> Wizard </span>
+      </a>
+      </li>
+      </ul>
+      </div>
+      </li>
+      
+      <li>
+      <a data-toggle="collapse" href="#mapsExamples">
+      <i class="now-ui-icons location_pin"></i>
+      <p>
+      Maps <b class="caret"></b>
+      </p>
+      </a>
+      <div class="collapse " id="mapsExamples">
+      <ul class="nav">
+      <li>
+      <a href="../examples/maps/google.html">
+      <span class="sidebar-mini-icon">GM</span>
+      <span class="sidebar-normal"> Google Maps </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/maps/fullscreen.html">
+      <span class="sidebar-mini-icon">FM</span>
+      <span class="sidebar-normal"> Full Screen Map </span>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/maps/vector.html">
+      <span class="sidebar-mini-icon">VM</span>
+      <span class="sidebar-normal"> Vector Map </span>
+      </a>
+      </li>
+      </ul>
+      </div>
+      </li>
+      <li>
+      <a href="../examples/widgets.html">
+      <i class="now-ui-icons objects_diamond"></i>
+      <p>Widgets</p>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/charts.html">
+      <i class="now-ui-icons business_chart-pie-36"></i>
+      <p>Charts</p>
+      </a>
+      </li>
+      <li>
+      <a href="../examples/calendar.html">
+      <i class="now-ui-icons media-1_album"></i>
+      <p>Calendar</p>
+      </a>
+      </li>
+      </ul>
+      </div>
+</div>
+
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container px-4 px-lg-5">
+          <a class="navbar-brand" href="{% url 'home:index' %}#OPPENHEIMER">Oppenheimer</a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ms-auto">
+
+                {% if request.user.is_authenticated %}
+                  <li class="nav-item"><a class="nav-link" href="{% url 'core:pagina_principal' %}">Inicio</a></li>
+                {% endif %}
+                
+
+                <li class="nav-item"><a class="nav-link" href="{% url 'home:about' %}#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'home:about' %}#Goals">Goals</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'home:about' %}#signup">Contact</a></li>
+                
+
+                {% if request.user.is_authenticated %}
+                  <li class="nav-item"><a class="nav-link" href="{% url 'home:LogOut' %}">Log Out</a></li>
+                {% else %}
+                  <li class="nav-item"><a class="nav-link" href="{% url 'home:LogIn' %}#login">Log In</a></li>
+                {% endif %}
+                
+              </ul>
+          </div>
+      </div>
+</nav>
+    {% comment %} Fin de la barra de navegacion {% endcomment %}
+
+    {% block body %}
+    {% comment %} Contenido de las demas paginas {% endcomment %}
+    {% endblock body %}
+    
+</body>
+<!-- Footer-->
+<!-- Bootstrap core JS-->
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> {% endcomment %}
+<!-- Core theme JS-->
+ <script src="{% static 'index/js/Alertas.js' %}"></script>
+{% comment %} <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> {% endcomment %}
+
+</html>

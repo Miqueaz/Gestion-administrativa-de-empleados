@@ -1,0 +1,153 @@
+{% extends '../base/base.html' %}
+{% block Bitacoras %}active{% endblock Bitacoras %}
+{% block body %}
+
+<div class="panel-header panel-header-sm">
+</div>
+
+<div class="content">
+  <div class="row g-0">
+
+    <div class="col-md-1">
+    </div>
+
+    <div class="col-md-5">
+      <div class="card">
+
+        <div class="card-header">
+          <div class="row g-0">
+
+            <div class="col-sm-12 text-center">
+              <h4 class="card-category"> Empleado: {{ Empleado.primerapellido }} {{ Empleado.segundoapellido }} {{ Empleado.nombrepila }} </h4>
+               <h4 class="card-title">Bitácoras Tareas y Actividades</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+
+          <div class="table-responsive table-hover">
+
+            <table class="table table-sm " style="text-align:center;">
+
+              <thead class="text-info">
+                <tr>
+                  <div class="row">
+                    <th class="col-md-1">Número</th>
+                    <th class="col-md-5">Bitácora</th>
+                    <th class="col-md-4">Descripcion</th>
+                    <th class="col-md-2">Detalles</th>
+                  </div>
+                </tr>
+              </thead>
+
+              <tbody style="text-align:rigth;">
+                  {% for b in BitacorasActividades %}
+                    {% if b.bitacoras__numero != None %}
+                        <tr>
+                          <td>{{b.bitacoras__numero}}</td>
+                          <td>{{b.bitacoras__titulo}}</td>
+                          <td>{{b.bitacoras__bittarea__tarea__orden}}</td>
+                            <!--DETALLES-->
+                          <td class="text-center"><a href="{% url 'core:bitacoraTerminada' pk=b.bitacoras__numero %}" class="btn btn-info btn-round btn-icon btn-sm">
+                              <i class="now-ui-icons ui-1_simple-add"></i></a></td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                          <td>No hay  </td>
+                          <td>Bitacoras</td>
+                          <td>disponibles</td>
+                          <td>---</td>
+                        </tr>
+                    {% endif %}
+                  {% endfor %}
+              </tbody>   
+
+            </table>
+
+          </div>
+
+        </div>                      
+
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="card">
+
+        <div class="card-header">
+          <div class="row g-0">
+
+            <div class="col-sm-12 text-center">
+              <h4 class="card-category">Empleado: {{ Empleado.primerapellido }} {{ Empleado.segundoapellido }} {{ Empleado.nombrepila }} </h4>
+               <h4 class="card-title">Bitácoras Errores y Soluciones</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+
+          <div class="table-responsive table-hover">
+
+            <table class="table table-sm " style="text-align:center;">
+
+              <thead class="text-primary">
+                <tr>
+                  <div class="row">
+                    <th class="col-md-1">Número</th>
+                    <th class="col-md-5">Bitácora</th>
+                    <th class="col-md-4">Error</th>
+                    <th class="col-md-2">Detalles</th>
+                  </div>
+                </tr>
+              </thead>
+
+              <tbody style="text-align:rigth;">
+                {% for b in BitacorasErroresSoluciones %}
+                {% if b.bitacoras__numero != None %}
+                  {% if b.bitacoras__errores__descripcion != None %}
+                    <tr>
+                      <td>{{b.bitacoras__numero}}</td>
+                      <td>{{b.bitacoras__titulo}}</td>
+                      <td>{{b.bitacoras__errores__descripcion}}</td>
+                        <!--DETALLES-->
+                      <td class="text-center"><a href="{% url 'core:bitacoraTerminada' pk=b.numero %}" class="btn btn-primary btn-round btn-icon btn-sm">
+                          <i class="now-ui-icons ui-1_simple-add"></i></a></td>
+                    </tr>
+                    {% endif %}
+                {% else %}
+                    <tr>
+                      <td>No hay  </td>
+                      <td>Bitacoras</td>
+                      <td>disponibles</td>
+                      <td>---</td>
+                    </tr>
+                {% endif %}
+              {% endfor %}
+              </tbody>   
+
+            </table>
+          </div>
+
+        </div>                      
+
+      </div>
+    </div>
+
+    <div class="col-md-1">
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+      <a type="button" class="btn btn-primary btn-block" href="{{ request.META.HTTP_REFERER }}">Regresar</a>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+  
+</div>
+
+{% endblock body %}

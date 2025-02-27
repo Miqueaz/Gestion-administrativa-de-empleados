@@ -1,0 +1,75 @@
+{% extends '../base/base.html' %}
+{% block BitacorasTA %}active{% endblock BitacorasTA %}
+{% block active3 %}{% endblock active3 %}
+{% block show3 %}show{% endblock show3 %}
+{% block body %}
+
+<div class="panel-header panel-header-sm">
+</div>
+
+<div class="content">
+  <div class="row g-0">
+
+    <div class="col-md-3">
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+
+        <div class="card-header">
+          <div class="row g-0">
+
+            <div class="col-sm-12 text-center">
+               <h4 class="card-title">Bitácoras De Tareas y Actividades</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+
+          <div class="table-responsive table-hover">
+
+            <table class="table table-sm " style="text-align:center;">
+
+              <thead class="text-primary">
+                <tr>
+                  <div class="row">
+                    <th class="col-md-1">Número</th>
+                    <th class="col-md-5">Bitácora</th>
+                    <th class="col-md-4">Fecha</th>
+                    <th class="col-md-2">Detalles</th>
+                  </div>
+                </tr>
+              </thead>
+
+              <tbody style="text-align:rigth;">
+                  {% for b in BitacorasActividades %}
+                    {% if b.bitacoras__numero != None %}
+                      <tr>
+                        <td>{{b.bitacoras__numero}}</td>
+                        <td>{{b.bitacoras__titulo}}</td>
+                        <td>{{b.bitacoras__fecha}}</td>
+                          <!--DETALLES-->
+                        <td class="text-center"><a href="{% url 'core:bitacoraTerminada' pk=b.bitacoras__numero %}" class="btn btn-info btn-round btn-icon btn-sm">
+                            <i class="now-ui-icons ui-1_simple-add"></i></a></td>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+              </tbody>   
+
+            </table>
+
+          </div>
+
+        </div>                      
+
+      </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+
+  </div>
+  
+</div>
+
+{% endblock body %}

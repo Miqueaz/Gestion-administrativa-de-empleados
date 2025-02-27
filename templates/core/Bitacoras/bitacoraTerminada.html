@@ -1,0 +1,170 @@
+{% extends '../base/base.html' %}
+{% block BitacoraTerminada %}active{% endblock BitacoraTerminada %}
+{% block body %}
+
+<div class="panel-header panel-header-sm">
+</div>
+
+<div class="content">
+  <div class="row">
+    <div class="col-md-2">
+
+    </div>
+    
+    {% for b in Bitacoras %}
+      <div class="card col-md-4">
+        <div class="card-header">
+          <h5 class="card-category text-primary text-right">No.{{b.bitacoras__numero}}</h5>
+          <h2 class="title text-primary text-center">{{b.bitacoras__titulo}}</h2>
+          <h6 class="text-primary">Empelado: {{ b.nombrepila }} {{ b.primerapellido }}</h6>
+        </div>
+        <div class="card-body">
+          <div class="row">
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                      <label>Nombre/s:</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ b.nombrepila }}">
+                  </div>
+                </div>
+                <div class="col-md-8 pl-1">
+                  <div class="form-group">
+                      <label>Apellido/s:</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ b.primerapellido }} {{ b.segundoapellido }}">
+                  </div>
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-8 pr-1">
+                <div class="form-group">
+                  <label>Horario:</label>
+                  <input type="text" class="form-control"  disabled=""  value="{{ b.horario }}">
+                </div>
+              </div>
+              <div class="col-md-4 pl-1">
+                <div class="form-group">
+                  <label>Puesto:</label>
+                  <input type="text" class="form-control"  disabled=""  value="{{ b.primerapellido }} {{ b.segundoapellido }}">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Área De Trabajo:</label>
+                  <input type="text" class="form-control"  disabled=""  value="{{ b.puesto__nombre }}">
+                </div>
+              </div>
+              <div class="col-md-6 pl-1">
+                <div class="form-group">
+                  <label>Jefe De Ärea.</label>
+                  <input type="text" class="form-control"  disabled=""  value="{{ b.jefearea__nombrepila }} {{ b.jefearea__primerapellido }}">
+                </div>
+              </div>
+            </div>
+        </div>
+        <hr>
+          <div class="card-header">
+            <h6 class="text-primary">Errores:</h6>
+            {% for ES in ErroresSoluciones %}
+            {% if ES.bitacoras__errores__numero != None %}
+              <p>{{ES.bitacoras__errores__numero}} - {{ES.bitacoras__errores__descripcion}}</p>
+            {% endif %}
+            {% endfor %}
+            
+          </div>
+          <div class="card-body">
+
+          </div>
+          <hr>
+          <div class="card-header">
+            <h6 class="text-primary">Soluciones:</h6>
+            {% for ES in ErroresSoluciones %}
+            {% if ES.bitacoras__errores__soluciones__numero != None %}
+              <p>{{ES.bitacoras__errores__soluciones__numero}} - {{ES.bitacoras__errores__soluciones__descripcion}}</p>
+            {% endif %}
+            {% endfor %}
+          </div>
+          <div class="card-body">
+            
+          </div>
+      </div>
+
+      <div class="card col-md-4">
+
+            <div class="card-header">
+              <h5 class="card-category">Bitacoras</h5>
+              <h4 class="card-title">Tareas</h4>
+            </div>
+
+            <div class="card-body ">
+              <div class="table-responsive">
+                <div class="accordion" id="accordionExample">
+
+                  {% for t in Tareas %}
+                    <div class="accordion-item">
+
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#h{{ t.bitacoras__bittarea__tarea__numero }}" aria-expanded="false" aria-controls="h{{ t.bitacoras__bittarea__tarea__numero }}">
+                          {{ t.bitacoras__bittarea__tarea__orden }}
+                        </button>
+                      </h2>
+
+                      <div id="h{{ t.bitacoras__bittarea__tarea__numero }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <table class="table">
+                            <thead class="text-primary">
+                              <th>No.Actividad</th>
+                              <th>Descripción</th>
+                              <th class="text-right">Tiempo</th>
+                            </thead>
+            
+                            <tbody>
+                              {% for a in Actividades %} 
+                                {% comment %} {% if  a.bitacoras__bitact__actividad__descripcion  == t.bitacoras__bittarea__tarea__orden  %} {% endcomment %}
+                                  <tr>
+                
+                                    <td class="text-left">{{ a.bitacoras__bitact__actividad__numero }}</td>
+                
+                                    <td class="text-left">{{ a.bitacoras__bitact__actividad__descripcion }}</td>
+                
+                                    <td class="text-right">{{ a.bitacoras__bitact__tiempo }} </td>
+                
+                                  </tr>
+                                {% comment %} {% endif %} {% endcomment %}
+                              {% endfor %}
+                            </tbody>
+            
+                          </table>
+                        </div>
+                      </div>  
+                    </div>
+                  {% endfor %}
+                </div>
+                <hr>
+                <div class="card-header">
+                  <h2 class="title text-primary text-center">Meta: {{b.bitacoras__metas__meta}}</h2>
+                </div>
+              </div>
+            </div>
+      </div>
+      <div class="col-md-2">
+      
+      </div>
+    {% endfor %}
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+      <a type="button" class="btn btn-primary btn-block" href="{{ request.META.HTTP_REFERER }}">Regresar</a>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+  
+</div>
+
+
+{% endblock body %}

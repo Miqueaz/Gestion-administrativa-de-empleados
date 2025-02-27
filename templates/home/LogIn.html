@@ -1,0 +1,53 @@
+{% extends './base/base.html' %}
+{% load static %}
+{% block body %}   
+
+      <!-- Section: Design Block -->
+<div class="page-header clear-filter" filter-color="orange">
+  
+  <div class="page-header-image" style="background-image: url('/static/index/assets/img/bg-signup.jpg');"></div>
+      
+  <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center" >
+    <div class="d-flex justify-content-center">
+      <div class="text-center">
+        <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsla(0, 0%, 13%, 0.303); background-image: url('/static/s/assets/img/header.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 5%;">
+          
+          <div class="container">
+            <div class="row gx-lg-5 align-items-center">
+
+              <div class="col-lg-12 mb-5 mb-lg-0" >
+                <div class="card" style="background-color: hsla(0, 0%, 0%, 0.438);border-radius: 5%;">
+                  <div class="card-body py-5 px-md-5">
+                    <form action="" method="post" class="form">
+                      {% csrf_token %}
+                      <!-- User input -->
+                      <div class="form-outline mb-4">
+                        <label class="form-label" style="color: rgb(255, 255, 255);">Usuario</label>
+                        <input type="text" name="username" class="form-control" id="id_username" placeholder="Ingrese el usuario" style="color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0.527);">
+                      </div>
+                      <!-- Password input -->
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="form3Example4" style="color: rgb(255, 255, 255);">Contraseña</label>
+                        <input type="password" name="password" id="id_password" class="form-control" placeholder="Ingrese la contrasena" style="color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0.527);"/>
+                      </div>
+                      <!-- Submit button -->
+                      <button type="submit" class="btn btn-primary btn-block mb-4">
+                        Ingresar
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+  
+</div>
+<!-- Section: Design Block -->
+
+
+{% endblock body %}
+

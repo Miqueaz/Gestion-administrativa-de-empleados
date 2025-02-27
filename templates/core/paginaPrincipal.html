@@ -1,0 +1,591 @@
+{% extends './base/base.html' %}
+{% block Inicio %}active{% endblock Inicio %}
+{% block body %}
+
+
+
+
+{% if request.user.is_staff %}
+
+  <div class="panel-header panel-header-lg">
+    <canvas id="PrincipalGrafica"></canvas>
+  </div>
+
+  <div class="content">
+    
+    <div class="row">
+
+      <div class="col-lg-4">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category">Piezas</h5>
+            <h4 class="card-title">Cantidad de Piezas</h4>
+            {% comment %} <div class="dropdown">
+              <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
+                <i class="now-ui-icons loader_gear"></i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item text-danger" href="#">Remove Data</a>
+              </div>
+            </div> {% endcomment %}
+          </div>
+          <div class="card-body">
+
+            <div class="chart-area">
+              <canvas id="Grafica2"></canvas>
+            </div>
+
+          </div>
+
+          <div class="card-footer">
+            <div class="stats">
+              
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category">Materiales</h5>
+            <h4 class="card-title">Cantidad de Materiales</h4>
+            {% comment %} <div class="dropdown">
+              <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
+                <i class="now-ui-icons loader_gear"></i>
+              </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item text-danger" href="#">Remove Data</a>
+              </div>
+            </div> {% endcomment %}
+          </div>
+          <div class="card-body">
+
+            <div class="chart-area">
+              <canvas id="Grafica3"></canvas>
+            </div>
+
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category">Areas de Trabajo</h5>
+            <h4 class="card-title">Cantidad de empleados</h4>
+          </div>
+          <div class="card-body">
+            <div class="chart-area">
+              <canvas id="Grafica4"></canvas>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      
+      <div class="col-md-6">
+        <div class="row">
+
+          <div class="card">
+
+            <div class="card-header">
+              <h5 class="card-category">Áreas De Trabajo</h5>
+              <h4 class="card-title">Tareas en áreas de trabajo</h4>
+            </div>
+
+            <div class="card-body ">
+              <div class="table-responsive">
+                <div class="accordion" id="accordionExample">
+
+                  {% for a in Areasdetrabajo %}
+                    <div class="accordion-item">
+
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#h{{ a.numero }}" aria-expanded="false" aria-controls="h{{ a.numero }}">
+                          {{ a.nombre }}
+                        </button>
+                      </h2>
+
+                      <div id="h{{ a.numero }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <table class="table">
+                            <thead class="text-primary">
+                              <th>Tarea</th>
+                              <th>Descripción</th>
+                              <th class="text-right">Estado</th>
+                            </thead>
+            
+                            <tbody>
+                              {% for tarea in Tareas %}
+                                {% if  a.nombre  == tarea.areatrabajo.nombre  %}
+                                  <tr>
+                
+                                    <td class="text-left">{{ tarea.numero }}</td>
+                
+                                    <td class="text-left">{{ tarea.orden }}</td>
+                
+                                    <td class="text-right">{{ tarea.estado.descripcion }} </td>
+                
+                                  </tr>
+                                {% endif %}
+                              {% endfor %}
+                            </tbody>
+            
+                          </table>
+                        </div>
+                      </div>  
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+
+            <div class="card-header ">
+              <h5 class="card-category">Áreas De Trabajo</h5>
+              <h4 class="card-title">Modelos en áreas de trabajo</h4>
+            </div>
+
+            <div class="card-body ">
+              <div class="table-responsive">
+                <div class="accordion" id="accordionExample2">
+
+                  {% for a in Areasdetrabajo %}
+                    <div class="accordion-item">
+
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q{{ a.numero }}" aria-expanded="false" aria-controls="q{{ a.numero }}">
+                          {{ a.nombre }}
+                        </button>
+                      </h2>
+
+                      <div id="q{{ a.numero }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample2">
+                        <div class="accordion-body">
+                          <table class="table">
+                            <thead class="text-primary">
+                              <th class="text-center">Numero</th>
+                              <th class="text-left">Modelos</th>
+                              <th class="text-left">Descripción</th>
+                              <th class="text-center">Cantidad</th>
+                            </thead>
+            
+                            <tbody>
+                              {% for m in Modelos %}
+                                {% if  a.numero  == m.area  %} 
+                                  <tr>
+                                      <td class="text-center">{{m.modelo__numero}}</td>
+                                      <td class="text-left">{{m.modelo__nombre}}</td>
+                                      <td class="text-left">{{m.modelo__descripcion}}</td>
+                                      <td class="text-center">{{m.cantidad}}</td>
+                                  </tr>
+                                {% endif %}
+                              {% endfor %}
+                            </tbody>
+            
+                          </table>
+                        </div>
+                      </div>  
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+                   
+        </div>
+      </div>
+
+      <div class="col-md-6">
+
+        <div class="card">
+
+          <div class="card-header">
+            <div class="row g-0">
+
+              <div class="col-sm-12 text-center">
+                  <h5 class="card-category"></h5>
+                <h4 class="card-title"></h4>___________________________________________________________________________________________</h4>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+              <div class="col-sm-12 text-center">
+                  <label>Empleado:</label>
+              </div>
+              <div class="row">
+                  <div class="col-md-4 pr-1">
+                    <div class="form-group">
+                      <label>Nombre/s</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ Empleado.nombrepila }}">
+                    </div>
+                  </div>
+                  <div class="col-md-4 px-1">
+                    <div class="form-group">
+                      <label>Primer Apellido</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ Empleado.primerapellido }}">
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-1">
+                    <div class="form-group">
+                      <label>Segundo Apellido</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ Empleado.segundoapellido }}">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 pr-1">
+                    <div class="form-group">
+                      <label>Calle</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ Empleado.dircalle }}">
+                    </div>
+                  </div>
+                  <div class="col-md-4 px-1">
+                    <div class="form-group">
+                      <label>Colonia</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ Empleado.dircolonia }}">
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-1">
+                    <div class="form-group">
+                      <label>Número Exterior</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ Empleado.dirnumero }}">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 pr-1">
+                    <div class="form-group">
+                      <label>Télefono</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ Empleado.numtel }}">
+                    </div>
+                  </div>
+                  <div class="col-md-4 px-1">
+                    <div class="form-group">
+                      <label>Horario</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ Empleado.horario }}">
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-1">
+                    <div class="form-group">
+                      <label>Área De Trabajo</label>
+                      <input type="text" class="form-control"  disabled="" value="{{ Empleado.areatrabajo.nombre }}">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 pr-1">
+                    <div class="form-group">
+                      <label>Puesto</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ Empleado.puesto.nombre }}">
+                    </div>
+                  </div>
+                  <div class="col-md-6 pl-1">
+                    <div class="form-group">
+                      <label>Jefe</label>
+                      <input type="text" class="form-control"  disabled="" value="{{ Empleado.jefearea.nombrepila }} {{ Empleado.jefearea.primerapellido }}">
+                    </div>
+                  </div>
+                </div>
+              
+      </div>
+
+    </div>
+
+  </div>
+
+{% else %}
+
+  <div class="panel-header panel-header-sm">
+  </div>
+
+  <div class="content">
+    
+    <div class="row">
+
+      <div class="col-md-6">
+        <div class="card">
+
+          <div class="card-header ">
+            <h5 class="card-category">Tareas</h5>
+            <h4 class="card-title">Tareas Asignadas</h4>
+          </div>
+
+          <div class="card-body ">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="text-primary">
+                  <th class="text-center">Tarea</th>
+                  <th class="text-left">Descripción</th>
+                  <th class="text-center">Estado</th>
+                </thead>
+
+                <tbody>
+                  {% for tarea in Tareas %}
+                  <tr>
+                
+                    <td class="text-center">{{ tarea.numero }}</td>
+
+                    <td class="text-left">{{ tarea.orden }}</td>
+
+                    <td class="text-center">{{ tarea.estado__descripcion }} </td>
+
+                  </tr>
+                  {% endfor %}
+                </tbody>
+
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-header">
+            <h5 class="card-category">Areas de Trabajo</h5>
+            <h4 class="card-title">{{AreaTrabajo.nombre}}</h4>
+          </div>
+  
+          <div class="card-body">
+  
+            <div class="table-responsive table-hover">
+              <table class="table table-sm">
+                <thead class="text-primary">
+                 <tr>
+                    <div class="row g-0">
+                      <th class="col-md-1 text-center">Número</th>
+                      <th class="col-md-2">Modelo</th>
+                      <th class="col-md-5">Descripción</th>
+                      <th class="col-md-2 text-center">Cantidad</th>
+                    </div>
+                  </tr>
+                </thead>
+                <tbody style="text-align:rigth;">
+                    {% for m in Modelos %}
+                        <tr>
+                            <td class="text-center">{{m.modelo__numero}}</td>
+                            <td>{{m.modelo__nombre}}</td>
+                            <td>{{m.modelo__descripcion}}</td>
+                            <td class="text-center">{{m.cantidad}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>   
+  
+              </table>
+  
+            </div>
+  
+          </div>                      
+  
+        </div>
+
+      </div>
+
+      <div class="col-md-6">
+        <div class="card">
+
+          <div class="card-header">
+            <div class="row g-0">
+  
+              <div class="col-sm-12 text-center">
+                  <h5 class="card-category">Bitacorass</h5>
+                 <h4 class="card-title">Nueva Bitacora</h4>___________________________________________________________________________________________</h4>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+              <div class="col-sm-12 text-center">
+                  <label>Empleado:</label>
+              </div>
+              <div class="row">
+                  <div class="col-md-4 pr-1">
+                    <div class="form-group">
+                      <label>Nombre/s</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ Empleado.nombrepila }}">
+                    </div>
+                  </div>
+                  <div class="col-md-4 px-1">
+                    <div class="form-group">
+                      <label>Primer Apellido</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ Empleado.primerapellido }}">
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-1">
+                    <div class="form-group">
+                      <label>Segundo Apellido</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ Empleado.segundoapellido }}">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 pr-1">
+                    <div class="form-group">
+                      <label>Calle</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ Empleado.dircalle }}">
+                    </div>
+                  </div>
+                  <div class="col-md-4 px-1">
+                    <div class="form-group">
+                      <label>Colonia</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ Empleado.dircolonia }}">
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-1">
+                    <div class="form-group">
+                      <label>Número Exterior</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ Empleado.dirnumero }}">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 pr-1">
+                    <div class="form-group">
+                      <label>Télefono</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ Empleado.numtel }}">
+                    </div>
+                  </div>
+                  <div class="col-md-4 px-1">
+                    <div class="form-group">
+                      <label>Horario</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ Empleado.horario }}">
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-1">
+                    <div class="form-group">
+                      <label>Área De Trabajo</label>
+                      <input type="text" class="form-control"  disabled="" value="{{ Empleado.areatrabajo.nombre }}">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 pr-1">
+                    <div class="form-group">
+                      <label>Puesto</label>
+                      <input type="text" class="form-control"  disabled=""  value="{{ Empleado.puesto.nombre }}">
+                    </div>
+                  </div>
+                  <div class="col-md-6 pl-1">
+                    <div class="form-group">
+                      <label>Jefe</label>
+                      <input type="text" class="form-control"  disabled="" value="{{ Empleado.jefearea.nombre }}">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 text-center">
+                  <h4 class="card-title">___________________________________________________________________________________________</h4>
+                  <label>Información Laboral</label>
+              </div>
+              <div class="row g-0">
+                  <div class="col-md-6">
+                      <div class="card text-center text-primary">
+                          <label class="card-title">Tarea/s:</label>
+                              {{ Tareas.orden }}
+                      </div>
+                      <div class="row g-0">
+                          <div class="col-md-6">
+                              <div class="card text-center text-primary">
+                                  <label class="card-title">Error/es</label>
+                              </div>
+                              
+                          </div>
+                          <div class="col-md-6">
+                              <div class="card text-center text-primary">
+                                  <label class="card-title">Solución/es</label>
+                              </div>
+                          </div>
+                      </div>
+                      <h4 class="card-title text-center">_____________________________________________</h4>
+                      <div class="row g-0">
+                          <div class="col-md-3">
+                              <div class="card text-center text-primary">
+                                  <label class="card-title">Fecha De Inicio:</label>
+                              </div>
+                              
+                          </div>
+                          <div class="col-md-3">
+                              <div class="card text-center text-primary">
+                                  <label class="card-title">Fecha Final:</label>
+                              </div>
+                              
+                          </div>
+                          <div class="col-md-6">
+                              <div class="card text-center text-primary">
+                                  <label class="card-title">Fecha</label>
+                              </div>
+                          </div>
+                      </div>
+  
+                  </div>
+                  <div class="col-md-5">
+                      <div class="card text-center text-primary">
+                          <label class="card-title">Actividad/es:</label>
+  
+                      </div>
+                  </div>
+                  <div class="col-md-1">
+                      <div class="card text-center text-primary">
+                          <label class="card-title">Tiempo:</label>
+                          
+                      </div>
+                  </div>
+              </div>
+          </div> 
+          <div class="row">
+              <div class="col-md-4 pr-1">
+              </div>
+              <div class="col-md-4 px-1">
+              </div>
+              <div class="col-md-4 pl-1">
+                  <div class="container">
+                      <button type="button" id="Guardar" class="btn btn-primary btn-block">Completar Bitácora</button>
+                    </div>
+              </div>
+            </div>
+  
+        </div>
+      </div>
+      
+
+    </div>
+
+  </div>
+
+{% endif %}
+
+{% endblock body %}

@@ -1,0 +1,79 @@
+{% extends '../base/base.html' %}
+{% block cantidadModelos2 %}active{% endblock cantidadModelos2 %}
+{% block body %}
+
+<div class="panel-header panel-header-sm">
+</div>
+
+<div class="content">
+  <div class="row g-0">
+
+    <div class="col-md-3">
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+
+        <div class="card-header">
+          <div class="row g-0">
+            <div class="col-sm-6 text-center">
+              <h4 class="card-category">Modelo:</h4>
+              <h5 class="card-title">{{Modelo.nombre}}</h5>
+            </div>
+            <div class="col-sm-6 text-center">
+                <h4 class="card-category">Descripción:</h4>
+                <h5 class="card-title">{{Modelo.descripcion}}</h5>
+              </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+
+          <div class="table-responsive table-hover">
+            <table class="table table-sm">
+              <thead class="text-primary">
+               <tr>
+                  <div class="row g-0">
+                    <th class="col-md-2 text-center">Número Pieza</th>
+                    <th class="col-md-3 text-center">Pieza</th>
+                    <th class="col-md-3 text-center">Cantidad</th>
+                    {% comment %} <th class="col-md-3 text-center">Materiales</th> {% endcomment %}
+                  </div>
+                </tr>
+              </thead>
+              <tbody style="text-align:rigth;">
+                  {% for m in Modelos %}
+                      <tr>
+                          <td class="text-center">{{m.pieza__numero}}</td>
+                          <td class="text-center">{{m.pieza__nombre}}</td>
+                          <td class="text-center">{{m.totalpiezas}}</td>
+                          {% comment %} <td class="text-center">{{p.Materiales.nombre}}</td> {% endcomment %}
+                      </tr>
+                  {% endfor %}
+              </tbody>   
+
+            </table>
+
+          </div>
+
+        </div>                      
+
+      </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+      <a type="button" class="btn btn-primary btn-block" href="{{ request.META.HTTP_REFERER }}">Regresar</a>
+    </div>
+    <div class="col-md-3">
+    </div>
+  </div>
+  
+</div>
+
+  {% endblock body %}

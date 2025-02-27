@@ -1,0 +1,195 @@
+{% extends '../base/base.html' %}
+{% block Bitacoras %}active{% endblock Bitacoras %}
+
+{% block body %}
+
+<div class="panel-header panel-header-sm">
+</div>
+
+<div class="content">
+  <div class="row g-0">
+
+    <div class="col-md-2">
+    </div>
+<!------------------------------>
+
+    <div class="col-md-8">
+      <div class="card">
+
+        <div class="card-header">
+          <div class="row g-0">
+
+            <div class="col-sm-12 text-center">
+                <label>Bitácora</label>
+               <h4 class="card-title">{{ Bitacora.titulo }}</h4>
+               <hr>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+            <div class="col-sm-12 text-center">
+                <label>Empleado:</label>
+            </div>
+            <div class="row">
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Nombre/s</label>
+                    <input type="text" class="form-control"  disabled=""  value="{{ EmpleadoS.nombre }}">
+                  </div>
+                </div>
+                <div class="col-md-4 px-1">
+                  <div class="form-group">
+                    <label>Primer Apellido</label>
+                    <input type="text" class="form-control"  disabled=""  value="{{ Empleado.primerapellido }}">
+                  </div>
+                </div>
+                <div class="col-md-4 pl-1">
+                  <div class="form-group">
+                    <label>Segundo Apellido</label>
+                    <input type="text" class="form-control"  disabled=""  value="{{ Empleado.segundoapellido }}">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Calle</label>
+                    <input type="text" class="form-control"  disabled=""  value="{{ Empleado.dircalle }}">
+                  </div>
+                </div>
+                <div class="col-md-4 px-1">
+                  <div class="form-group">
+                    <label>Colonia</label>
+                    <input type="text" class="form-control"  disabled=""  value="{{ Empleado.dircolonia }}">
+                  </div>
+                </div>
+                <div class="col-md-4 pl-1">
+                  <div class="form-group">
+                    <label>Número Exterior</label>
+                    <input type="text" class="form-control"  disabled=""  value="{{ Empleado.dirnumero }}">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Télefono</label>
+                    <input type="text" class="form-control"  disabled=""  value="{{ Empleado.numtel }}">
+                  </div>
+                </div>
+                <div class="col-md-4 px-1">
+                  <div class="form-group">
+                    <label>Horario</label>
+                    <input type="text" class="form-control"  disabled=""  value="{{ Empleado.horario }}">
+                  </div>
+                </div>
+                <div class="col-md-4 pl-1">
+                  <div class="form-group">
+                    <label>Área De Trabajo</label>
+                    <input type="text" class="form-control"  disabled="" value="{{ Empleado.areatrabajo.nombre }}">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div class="form-group">
+                    <label>Puesto</label>
+                    <input type="text" class="form-control"  disabled=""  value="{{ Empleado.puesto.nombre }}">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div class="form-group">
+                    <label>Jefe</label>
+                    <input type="text" class="form-control"  disabled="" value="{{ Empleado.jefearea.nombre }}">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 text-center">
+                <hr>
+                <label>Información Laboral</label>
+            </div>
+            <div class="row g-0">
+                <div class="col-md-6">
+                    <div class="card text-center text-primary">
+                        <label class="card-title">Tarea/s:</label>
+                            {{ Tareas.orden }}
+                    </div>
+                    <div class="row g-0">
+                        <div class="col-md-6">
+                            <div class="card text-center text-primary">
+                                <label class="card-title">Error/es</label>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card text-center text-primary">
+                                <label class="card-title">Solución/es</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row g-0">
+                        <div class="col-md-3">
+                            <div class="card text-center text-primary">
+                                <label class="card-title">Fecha De Inicio:</label>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center text-primary">
+                                <label class="card-title">Fecha Final:</label>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card text-center text-primary">
+                                <label class="card-title">Fecha</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-5">
+                    <div class="card text-center text-primary">
+                        <label class="card-title">Actividad/es:</label>
+
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="card text-center text-primary">
+                        <label class="card-title">Tiempo:</label>
+                        
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-md-4 pr-1">
+            </div>
+            <div class="col-md-4 px-1">
+            </div>
+            <div class="col-md-4 pl-1">
+                <div class="container">
+                    <button type="button" id="Guardar" class="btn btn-primary btn-block"></button>
+                  </div>
+            </div>
+          </div>
+
+      </div>
+    </div>
+
+<!------------------------------>
+    <div class="col-md-2">
+    </div>
+
+  </div>
+  
+</div>
+
+{% endblock body %}

@@ -1,0 +1,78 @@
+{% extends '../base/base.html' %}
+{% block cantidadModelos %}active{% endblock cantidadModelos %}
+{% block body %}
+
+<div class="panel-header panel-header-sm">
+</div>
+
+<div class="content">
+  <div class="row g-0">
+
+    <div class="col-md-3">
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+
+        <div class="card-header">
+          <div class="row g-0">
+
+            <div class="col-sm-12 text-center">
+              <h4 class="card-title">{{AreaTrabajo.nombre}}</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+
+          <div class="table-responsive table-hover">
+            <table class="table table-sm">
+              <thead class="text-primary">
+               <tr>
+                  <div class="row g-0">
+                    <th class="col-md-1 text-center">Número</th>
+                    <th class="col-md-2">Modelo</th>
+                    <th class="col-md-5">Descripción</th>
+                    <th class="col-md-2 text-center">Cantidad</th>
+                    <th class="col-md-2 text-center">Detalles</th>
+                  </div>
+                </tr>
+              </thead>
+              <tbody style="text-align:rigth;">
+                  {% for m in Modelos %}
+                      <tr>
+                          <td class="text-center">{{m.modelo__numero}}</td>
+                          <td>{{m.modelo__nombre}}</td>
+                          <td>{{m.modelo__descripcion}}</td>
+                          <td class="text-center">{{m.cantidad}}</td>
+                          <td class="text-center"><a href="{% url 'core:detailModelos' pk=m.modelo__numero %}" class="btn btn-primary btn-round btn-icon btn-sm">
+                            <i class="now-ui-icons files_box"></i></a>
+                          </td>
+                      </tr>
+                  {% endfor %}
+              </tbody>   
+
+            </table>
+
+          </div>
+
+        </div>                      
+
+      </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+      <a type="button" class="btn btn-primary btn-block" href="{% url 'core:areasTrabajo' %}">Regresar</a>
+    </div>
+    <div class="col-md-3">
+    </div>
+  </div>
+</div>
+
+  {% endblock body %}

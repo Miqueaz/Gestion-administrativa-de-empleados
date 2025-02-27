@@ -1,0 +1,89 @@
+{% extends '../base/base.html' %}
+{% block Empleados %}active{% endblock Empleados %}
+{% block body %}
+
+
+
+<div class="panel-header panel-header-sm">
+</div>
+
+<div class="content">
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="card">
+
+        <div class="card-header">
+          <div class="row g-0">
+
+            <div class="col-sm-4">
+               <h4 class="card-title">Empleados Registrados</h4>
+            </div>
+            {% if request.user.is_staff %}
+            
+              <div class="col-sm-7" >
+                <a class="btn btn-primary btn-block" href="{% url 'core:registro' %}">Registrar nuevo Empleado</a>
+              </div>
+
+            {% endif %}
+            
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="table-responsive table-hover">
+
+            <table class="table table-sm ">
+
+              <thead class="text-primary">
+                <tr>
+                    <th>Empleado</th>
+                    <th>Apellidos</th>
+                    <th>Área de Trabajo</th>
+                    <th>Jefe de Área</th>
+                    <th>Puesto</th>
+                    <th>Horario</th>
+                    <th>Ver Bitácoras</th>
+                    <th>Detalles</th>
+                    <th>Eliminar</th>
+                </tr>
+              </thead>
+
+              <tbody style="text-align:rigth;">
+                  {% for e in Empleados %}
+                      <tr> 
+                          <td>{{e.nombrepila}}</td>
+                          <td>{{ e.primerapellido }} {{ e.segundoapellido }}</td>
+                          <td>{{e.areatrabajo.nombre}}</td>
+                          <td>{{e.jefearea.nombrepila}} Jefe {{e.jefearea.numero}}</td>
+                          <td>{{e.puesto.nombre}}</td>
+                          <td>{{e.horario}}</td>
+                          <!--BITÁCORAS-->
+                          <td class="text-center"><a href="{% url 'core:detailBitacoras' pk=e.numero %}" class="btn btn-info btn-round btn-icon btn-sm">
+                            <i class="now-ui-icons education_paper"></i></a>
+                          </td>
+                          <!--DETALLES-->
+                          <td class="text-center"><a href="{% url 'core:detailEmpleados' pk=e.numero %}" class="btn btn-info btn-round btn-icon btn-sm">
+                            <i class="now-ui-icons users_single-02"></i></a>
+                          </td>
+                            <!--Eliminar-->               
+                          <td class="text-center"><a href="#"  onclick = "Eliminar( 'eliminarEmpleado/', {{e.numero}} )" type="submit" class="btn btn-danger btn-round btn-icon btn-sm">
+                            <i class="now-ui-icons ui-1_simple-remove"></i></a>
+                          </td>
+                      </tr>
+                  {% endfor %}
+              </tbody>   
+
+            </table>
+          </div>
+
+        </div>                      
+
+      </div>
+    </div>
+
+  </div>
+  
+</div>
+
+{% endblock body %}
